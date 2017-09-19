@@ -5,5 +5,14 @@ def array_min(array):
             min_value = array[i]
     return min_value
 
-
-print(array_min(list(int(i) for i in input().split(','))))
+	
+def array_average(array):
+	sum = 0
+	for i in array:
+		sum += i
+	return sum / len(array)
+	
+	
+input_array = list(int(i) for i in input().split(','))
+print(array_min(input_array))
+print(array_average(input_array))

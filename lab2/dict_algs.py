@@ -2,7 +2,7 @@ def useful_func(emps):
     right_emps = set()
     for emp in emps:
         for child in emp.get("children"):
-            if child.get("age") > 10:
+            if child.get("age") > 18:
                 right_emps.add(emp.get("name"))
     return right_emps
 
