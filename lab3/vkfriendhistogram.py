@@ -28,4 +28,6 @@ def get_ages(username):
     return age
 
 
-print(get_ages("dmitrykhitrin"))
+age = get_ages(input())
+for i in sorted(age.keys()):
+    print(i, '#' * age.get(i))
