@@ -114,4 +114,4 @@ def start_followers(username):
     }, username, "Man-Woman statistics")
 
 
-start_friends("username")
+start_followers("username")

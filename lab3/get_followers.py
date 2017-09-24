@@ -1,5 +1,6 @@
 import datetime
 import json
+import time
 
 import requests
 
@@ -34,7 +35,12 @@ class GetFollowers(get_friends.GetFriends):
         followers_count = json.loads(response.text).get("response").get("count")
         print("Almost:", followers_count)
         while len(followers) < followers_count:
-            print("Downloaded:", round(len(followers) / followers_count * 100, 2), "%", "Followers: ", followers_count)
+            print("Downloaded: ",
+                  round(len(followers) / followers_count * 100, 3),
+                  "% ",
+                  "Followers: ",
+                  followers_count,
+                  sep='')
             self.offset += 1000
             response = requests.get(super().generate_url(self.method), self.get_params())
             try:
@@ -43,4 +49,6 @@ class GetFollowers(get_friends.GetFriends):
                     followers_count = json.loads(response.text).get("response").get("count")
             except AttributeError as e:
                 open("./Error", "a").write(str(datetime.datetime.now()) + str(e) + "\n")
+                open("./Error_data", "a").write(str(datetime.datetime.now()) + "\n" + response.text + "\n\n\n")
+                time.sleep(1)
         return followers
