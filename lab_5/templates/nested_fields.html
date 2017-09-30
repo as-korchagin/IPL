@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        Nested fields
+        {% endblock %}
+    </title>
+</head>
+<body>
+{% block container %}
+<ul>
+    <li> {{ vars.var_1 }}</li>
+    <li> {{ vars.var_2 }}</li>
+    <li> {{ vars.var_3 }}</li>
+    <li> {{ vars.var_4 }}</li>
+</ul>
+{% endblock %}
+</body>
+</html>

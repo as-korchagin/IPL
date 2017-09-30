@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        Variables
+        {% endblock %}
+    </title>
+</head>
+<body>
+{% block container %}
+<ul>
+    <li>Variable 'var_1' = {{ var_1 }}</li>
+</ul>
+{% endblock container %}
+</body>
+</html>

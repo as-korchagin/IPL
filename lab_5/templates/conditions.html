@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        Conditions
+        {% endblock %}
+    </title>
+</head>
+<body>
+{% block container %}
+<ul>
+    {% if args.first > args.second %}
+    <li>first > second</li>
+    {% else %}
+    <li> first < second</li>
+    {% endif %}
+</ul>
+{% endblock %}
+</body>
+</html>
