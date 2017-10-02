@@ -2,7 +2,8 @@ import json
 
 import requests
 
-from lab3 import base_client
+import base_client
+from assist_functions import terminate
 
 
 class GetUserId(base_client.BaseClient):
@@ -31,15 +32,12 @@ class GetUserId(base_client.BaseClient):
     def response_handler(self, response):
         try:
             user_id = json.loads(response.text).get("response")[0].get("uid")
-            return {
-                "error_code": 0,
-                "data": user_id
-            }
+            return user_id
         except TypeError:
-            return {
+            terminate({
                 "error_code": int(json.loads(response.text).get("error").get("error_code")),
                 "data": json.loads(response.text).get("error").get("error_msg")
-            }
+            })
 
     def _get_data(self, method, http_method):
         response = requests.get(super().generate_url(self.method), self.get_params())

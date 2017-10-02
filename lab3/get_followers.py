@@ -4,22 +4,51 @@ import time
 
 import requests
 
-from lab3 import get_friends
+import base_client
+from assist_functions import check_date, create_bar_histogram, create_pie_histogram
+from get_userid import GetUserId
 
 
-class GetFollowers(get_friends.GetFriends):
+class GetFollowers(base_client.BaseClient):
+    BASE_URL = "https://api.vk.com/method/"
+
     method = "users.getFollowers?"
+
+    http_method = "GET"
 
     offset = 0
 
     user_id = None
 
-    def __init__(self, user_id):
-        self.user_id = user_id
-        super().__init__(user_id)
+    username = None
+
+    def __init__(self, username):
+        self.username = username
+        self.user_id = str(GetUserId(username).execute())
 
     def response_handler(self, response):
-        return super().response_handler(response)
+        sex_age = {
+            "1": dict(),
+            "2": dict()
+        }
+        for j in response:
+            try:
+                if (j.get("bdate") is not None) and (1 <= j.get("sex") <= 2):
+                    years = check_date(j)
+                    if years:
+                        if (sex_age[str(j.get("sex"))]).get(str(years)) is None:
+                            (sex_age[str(j.get("sex"))])[str(years)] = 1
+                        else:
+                            (sex_age[str(j.get("sex"))])[str(years)] += 1
+            except KeyError as e:
+                print(e)
+        create_bar_histogram(sex_age.get("1"), self.username, "Woman-age statistics")
+        create_bar_histogram(sex_age.get("2"), self.username, "Man-age statistics")
+        create_pie_histogram({
+            "Man": list(0 + int(n) for n in sex_age.get("2").keys()),
+            "Woman": list(0 + int(n) for n in sex_age.get("1").keys())
+        }, self.username, "Man-Woman statistics")
+        return True
 
     def get_params(self):
         return {"user_id": str(self.user_id),
@@ -51,4 +80,4 @@ class GetFollowers(get_friends.GetFriends):
                 open("./Error", "a").write(str(datetime.datetime.now()) + str(e) + "\n")
                 open("./Error_data", "a").write(str(datetime.datetime.now()) + "\n" + response.text + "\n\n\n")
                 time.sleep(1)
-        return followers
+        return self.response_handler(followers)
