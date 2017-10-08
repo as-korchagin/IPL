@@ -20,9 +20,8 @@ class Book:
         self.exec("DELETE FROM books WHERE name='%s'" % self.name)
 
     def update(self):
-        with self.cursor as c:
-            c.execute("UPDATE books SET description='%s' WHERE name='%s'" %
-                      (self.description, self.name))
+        self.exec("UPDATE books SET description='%s' WHERE name='%s'" %
+                  (self.description, self.name))
 
     def select(self, *args, **kwargs):
         sql = ''.join(i for i in ("SELECT %s FROM books" % ','.join(args)))
