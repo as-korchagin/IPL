@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'form_style.css' %}"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration</title>
+</head>
+<body>
+<div class="form">
+    <form>
+        <div class="form_action">
+            <label><input class="input_label" type="text" name="text" title="Логин" required>Логин</label><span></span>
+            <br>
+            <label><input class="input_label" type="text" name="text" title="Фамилия"
+                          required>Фамилия</label><span></span> <br>
+            <label><input class="input_label" type="text" name="text" title="Имя" required>Имя</label><span></span> <br>
+            <label><input class="input_label" type="text" name="text" title="E-Mail"
+                          required>E-Mail</label><span></span> <br>
+            <label><input class="input_label" type="text" name="text" title="Пароль"
+                          required>Ппроль</label><span></span> <br>
+            <label><input class="input_label" type="text" name="text" title="Повторите пароль" required>Повторите пароль</label><span></span>
+            <br>
+        </div>
+        <div class="form_button">
+            <p>
+                <button class="button">Зарегистрироваться</button>
+            </p>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+
