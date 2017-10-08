@@ -13,21 +13,16 @@ class Book:
         self.description = description
 
     def save(self):
-        sql = "INSERT INTO books (name, description) VALUES ('%s', '%s')" % \
-              (self.name, self.description)
-        with self.cursor as c:
-            c.execute(sql)
+        self.exec("INSERT INTO books (name, description) VALUES ('%s', '%s')" %
+                  (self.name, self.description))
 
     def delete(self):
-        sql = "DELETE FROM books WHERE name='%s'" % self.name
-        with self.cursor as c:
-            c.execute(sql)
+        self.exec("DELETE FROM books WHERE name='%s'" % self.name)
 
     def update(self):
-        sql = "UPDATE books SET description='%s' WHERE name='%s'" % \
-              (self.description, self.name)
         with self.cursor as c:
-            c.execute(sql)
+            c.execute("UPDATE books SET description='%s' WHERE name='%s'" %
+                      (self.description, self.name))
 
     def select(self, *args, **kwargs):
         sql = ''.join(i for i in ("SELECT %s FROM books" % ','.join(args)))
@@ -36,5 +31,8 @@ class Book:
                                          kwargs.get(i) if type(kwargs.get(i)) == int else "'{}'".format(kwargs.get(i)))
                           for i in kwargs.keys())
             sql += " WHERE %s" % ' AND '.join(params)
+        self.exec(sql)
+
+    def exec(self, sql):
         with self.cursor as c:
             c.execute(sql)
