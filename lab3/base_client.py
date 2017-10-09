@@ -1,6 +1,6 @@
 class BaseClient:
     # URL vk api
-    BASE_URL = None
+    BASE_URL = "https://api.vk.com/method/"
     # метод vk api
     method = None
     # GET, POST, ...

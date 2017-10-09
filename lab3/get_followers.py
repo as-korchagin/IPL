@@ -45,8 +45,8 @@ class GetFollowers(base_client.BaseClient):
         create_bar_histogram(sex_age.get("1"), self.username, "Woman-age statistics")
         create_bar_histogram(sex_age.get("2"), self.username, "Man-age statistics")
         create_pie_histogram({
-            "Man": list(0 + int(n) for n in sex_age.get("2").keys()),
-            "Woman": list(0 + int(n) for n in sex_age.get("1").keys())
+            "Man": sum(sex_age.get('2').values()),
+            "Woman": sum(sex_age.get('1').values())
         }, self.username, "Man-Woman statistics")
         return True
 

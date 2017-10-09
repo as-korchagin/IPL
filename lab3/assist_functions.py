@@ -22,6 +22,7 @@ def check_date(user):
 
 
 def create_bar_histogram(stat_data, username=None, title="Age statistics"):
+    plt.figure()
     plt.bar(list(int(m) for m in stat_data.keys()),
             list(int(m) for m in stat_data.values()))
     plt.title(title)
@@ -30,7 +31,8 @@ def create_bar_histogram(stat_data, username=None, title="Age statistics"):
 
 
 def create_pie_histogram(stat_data, username=None, title="Age statistics"):
-    plt.pie(list(int(l[0]) for l in stat_data.values()),
+    plt.figure()
+    plt.pie(list(stat_data.values()),
             labels=stat_data.keys())
     plt.title(title)
     save_hist(username, "png", title)
