@@ -1,3 +1,6 @@
+import requests
+
+
 class BaseClient:
     # URL vk api
     BASE_URL = "https://api.vk.com/method/"
@@ -24,10 +27,8 @@ class BaseClient:
 
     # Отправка запроса к VK API
     def _get_data(self, method, http_method):
-        response = None
-
-        # todo выполнить запрос
-
+        requets = self.generate_url(self.method)
+        response = requests.get(requets, self.get_params())
         return self.response_handler(response)
 
     # Обработка ответа от VK API
