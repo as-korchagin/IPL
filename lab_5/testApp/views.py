@@ -56,4 +56,4 @@ class CycleElement(View):
                 'info': "Information about element with id = {}".format(id)
             }
         }
-        return render(request, 'cycle_element.html', data)
+        return render(request, 'cycle_element_descr.html', data)

@@ -1,0 +1,15 @@
+{% extends 'cycle_element_descr.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<body>
+{% block navbar %}
+{% endblock %}
+{% block container %}
+    <ul>
+        <li>
+            <a href={% url 'element_url' element.id %}> {{ element.info }}</a>
+        </li>
+    </ul>
+{% endblock %}
+</body>
+</html>

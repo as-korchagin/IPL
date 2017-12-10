@@ -9,23 +9,23 @@
     <script src="{% static 'js/bootstrap.js' %}"></script>
     <title>{% block title %}
         base.html
-        {% endblock %}</title>
+    {% endblock %}</title>
 </head>
 <body>
 {% block navbar %}
-<nav class="navbar navbar-default">
-    <div class="navbar-header">
-        <a class="navbar-brand" href='/'>Главная</a>
-    </div>
-</nav>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" href='/'>Главная</a>
+        </div>
+    </nav>
 {% endblock %}
 {% block container %}
-<ul>
-    <li><a href='nested_fields.html'>"To nested fields" </a></li>
-    <li><a href='conditions.html'>"To conditions" </a></li>
-    <li><a href='cycles.html'>"To cycles" </a></li>
-    <li><a href='variables.html'>"To variables" </a></li>
-</ul>
+    <ul>
+        <li><a href='nested_fields.html'>"To nested fields" </a></li>
+        <li><a href='conditions.html'>"To conditions" </a></li>
+        <li><a href='cycles.html'>"To cycles" </a></li>
+        <li><a href='variables.html'>"To variables" </a></li>
+    </ul>
 {% endblock %}
 </body>
 </html>

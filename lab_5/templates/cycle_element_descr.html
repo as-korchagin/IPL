@@ -5,19 +5,17 @@
     <meta charset="UTF-8">
     <title>
         {% block title %}
-        id = {{ element.id }}
+            id = {{ element.id }}
         {% endblock %}
     </title>
 </head>
 <body>
-{% block navbar %}
-{% endblock %}
 {% block container %}
-<ul>
-    <li>
-        <a href={% url 'element_url' element.id %}> {{ element.info }}</a>
-    </li>
-</ul>
+    <ul>
+        <li>
+            {{ element.info }}
+        </li>
+    </ul>
 {% endblock %}
 </body>
 </html>

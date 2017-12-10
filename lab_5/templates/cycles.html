@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <title>
         {% block title %}
-        Cycles
+            Cycles
         {% endblock %}
     </title>
 </head>
 <body>
 {% block container %}
-{% for element in elements %}
-{% include 'cycle_element.html' with item=element %}
-{% empty %}
-<li>Список пуст</li>
-{% endfor %}
+    {% for element in elements %}
+        {% include 'cycle_element_href.html' %}
+    {% empty %}
+        <li>Список пуст</li>
+    {% endfor %}
 {% endblock %}
 </body>
 </html>
