@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col-md-8">
+        <p><strong> Название: </strong> {{ element.name }}</p>
+        <p><strong> Описание: </strong>{{ element.description }}</p>
+        <p><strong> Авторы: </strong>{% for author in authors %}
+            <a href="{% url 'author' id=author.id %}">{{ author.name }}</a>{% if not forloop.last %},
+            {% endif %} {% empty %} А кто его знает? {% endfor %}</p>
+        <p><strong> Жанры: </strong>{% for genre in genres %}
+            <a href="{% url 'genre' id=genre.id %}">{{ genre.name }}</a>{% if not forloop.last %},
+            {% endif %} {% empty %} А кто его знает? {% endfor %}</p>
+    </div>
+
+{% endblock %}

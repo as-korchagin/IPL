@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col-md-8">
+        <p>Books:</p>
+        <ul>
+            {% for elt in books %}
+                <li><a href="{% url 'book' id=elt.id %}">{{ elt }}</a> {% if is_last %} (last one) {% endif %}</li>
+            {% empty %}
+                <li>Пусто</li>
+            {% endfor %}
+        </ul>
+        <p>Genres:</p>
+        <ul>
+            {% for elt in genres %}
+                <li><a href="{% url 'genre' id=elt.id %}">{{ elt }}</a> {% if is_last %} (last one) {% endif %}</li>
+            {% empty %}
+                <li>Пусто</li>
+            {% endfor %}
+        </ul>
+        <p>Authors:</p>
+        <ul>
+            {% for elt in authors %}
+                <li><a href="{% url 'author' id=elt.id %}">{{ elt }}</a> {% if is_last %} (last one) {% endif %}</li>
+            {% empty %}
+                <li>Пусто</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
