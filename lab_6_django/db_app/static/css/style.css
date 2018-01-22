@@ -1,16 +1,13 @@
-.title
-{
-	margin:35 auto;
-	text-align:center;
+.title {
+    margin: 35 auto;
+    text-align: center;
 }
 
-.title-link
-{
-	color:black;
+.title-link {
+    color: black;
 }
 
-.title-link:hover
-{
-	text-decoration: none;
-	color:#444;
+.title-link:hover {
+    text-decoration: none;
+    color: #444;
 }

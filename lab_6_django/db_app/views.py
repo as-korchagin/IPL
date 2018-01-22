@@ -1,8 +1,8 @@
 from django.shortcuts import render
+
 from .models import *
 
 
-# Create your views here.
 def index(request):
     books = Book.objects.order_by('-name')
     genres = Genre.objects.order_by('-name')

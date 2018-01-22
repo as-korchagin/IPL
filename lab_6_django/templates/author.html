@@ -5,7 +5,7 @@
         <p><strong> Имя: </strong> {{ element.name }}</p>
         <p><strong> Описание: </strong>{{ element.description }}</p>
         <p><strong> Книги: </strong>{% for book in books %}<a href="{% url 'book' id=book.id %}">{{ book.name }}</a>
-            {% endfor %}</p>
+        {% endfor %}</p>
     </div>
 
 {% endblock %}
